@@ -12,6 +12,11 @@ function App() {
     setToDos((currentArray) => [toDo, ...currentArray]);
     setToDo("");
   };
+  const onRemove = (index) => {
+    setToDos((currentArray) =>
+      currentArray.filter((elem, todoindex) => index !== todoindex)
+    );
+  };
   return (
     <div>
       <h1>My To Dos ({toDos.length})</h1>
@@ -27,7 +32,10 @@ function App() {
       <hr />
       <ul>
         {toDos.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index}>
+            <span>{item}</span>
+            <button onClick={() => onRemove(index)}>Remove</button>
+          </li>
         ))}
       </ul>
     </div>
