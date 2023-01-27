@@ -17,3 +17,5 @@ useEffect(함수, 변수) 를 쓰면 함수를 변수가 바뀔때만 실행되�
 useEffect(함수, 변수) 의 함수의 반환값은 component가 없어질 때 작동한다.
 
 npm install react-router-dom
+
+npm install gh-pages

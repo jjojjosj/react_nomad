@@ -22,16 +22,28 @@ function Home() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              coverImg={movie.medium_cover_image}
-              title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
-            />
-          ))}
+          <h1>Best Movies List</h1>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>TITLE</th>
+                <th>SUMMARY</th>
+                <th>GENRES</th>
+              </tr>
+            </thead>
+            <tbody>
+              {movies.map((movie) => (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  coverImg={movie.medium_cover_image}
+                  title={movie.title}
+                  summary={movie.summary}
+                  genres={movie.genres}
+                />
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
