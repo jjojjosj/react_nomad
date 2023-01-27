@@ -25,7 +25,7 @@ function Detail() {
           <img src={movie.large_cover_image} alt={movie.title} />
           <h2>{movie.description_intro}</h2>
           <p>
-            <Link to="/">
+            <Link to={`${process.env.PUBLIC_URL}/`}>
               <button>Go Home</button>
             </Link>
           </p>
