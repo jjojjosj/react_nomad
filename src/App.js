@@ -27,6 +27,7 @@ function App() {
   };
   const onChangeMoney = (event) => {
     setMoney(event.target.value);
+    setSubmit(false);
   };
   return (
     <div>
