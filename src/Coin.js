@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./App.module.css";
 
-function App() {
+function Coin() {
   const [loading, setLoading] = useState(true);
   const [coins, setCoins] = useState([]);
   const [money, setMoney] = useState(0);
@@ -57,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default Coin;
