@@ -2,43 +2,56 @@ import { useState, useEffect } from "react";
 import styles from "./App.module.css";
 
 function App() {
-  const [toDo, setToDo] = useState("");
-  const [toDos, setToDos] = useState([]);
-  const onChange = (event) => setToDo(event.target.value);
-  const onSubmit = (event) => {
-    event.preventDefault();
-    if (toDo === "") {
-      return;
-    }
-    setToDos((currentArray) => [toDo, ...currentArray]);
-    setToDo("");
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
+  const [money, setMoney] = useState(0);
+  const [selectedCoinPrice, setSelectedCoinPrice] = useState();
+  const [submited, setSubmit] = useState(false);
+  useEffect(() => {
+    fetch("https://api.coinpaprika.com/v1/tickers")
+      .then((response) => response.json())
+      .then((json) => {
+        setCoins(json);
+        setLoading(false);
+      });
+  }, []);
+  const coinSelect = (event) => {
+    const myCoin = coins[event.target.selectedIndex];
+    setSelectedCoinPrice(myCoin.quotes.USD.price);
+    console.log(myCoin.name);
   };
-  const onRemove = (index) => {
-    setToDos((currentArray) =>
-      currentArray.filter((elem, todoindex) => index !== todoindex)
-    );
+  const calcUSD = (event) => {
+    event.preventDefault();
+    console.log(selectedCoinPrice / money);
+    setSubmit(true);
+  };
+  const onChangeMoney = (event) => {
+    setMoney(event.target.value);
   };
   return (
     <div>
-      <h1>My To Dos ({toDos.length})</h1>
-      <form onSubmit={onSubmit}>
+      <h1>The Coins! {loading ? "" : `(${coins.length})`}</h1>
+      {loading ? (
+        <strong>Loading...</strong>
+      ) : (
+        <select onChange={coinSelect}>
+          {coins.map((coin) => (
+            <option key={coin.id}>
+              {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD
+            </option>
+          ))}
+        </select>
+      )}
+      <form>
         <input
-          onChange={onChange}
-          value={toDo}
-          type="text"
-          placeholder="Write your to do..."
+          value={money}
+          onChange={onChangeMoney}
+          type="number"
+          placeholder="In my pocket"
         />
-        <button>Add To Do</button>
+        <button onClick={calcUSD}>Calculate</button>
       </form>
-      <hr />
-      <ul>
-        {toDos.map((item, index) => (
-          <li key={index}>
-            <span>{item}</span>
-            <button onClick={() => onRemove(index)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+      {submited ? <h2>You can buy {selectedCoinPrice / money} coins</h2> : null}
     </div>
   );
 }
