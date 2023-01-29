@@ -1,0 +1,39 @@
+.movie {
+    background-color: #374955;
+    border: 0;
+    float: left;
+    width: 25%;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 24px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break:break-all;
+}
+
+img {
+    float: left;
+    margin: 0;
+    box-shadow: 5px 5px 5px #000;
+}
+
+p {
+    margin: 0;
+}
+ul {
+    float: left;
+}
+li {
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #efefef;
+    font-size: 12px;
+}
