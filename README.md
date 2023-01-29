@@ -19,3 +19,5 @@ useEffect(함수, 변수) 의 함수의 반환값은 component가 없어질 때 
 npm install react-router-dom
 
 npm install gh-pages
+
+https://jjojjosj.github.io/react_nomad/
