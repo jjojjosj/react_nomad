@@ -7,4 +7,21 @@ h1 {
     margin: 0;
     border: 0;
     padding: 0;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.movies::-webkit-scrollbar {
+    width: 4px;  /* 스크롤바의 너비 */
+}
+
+.movies::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #676A8B; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+.movies::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
 }
